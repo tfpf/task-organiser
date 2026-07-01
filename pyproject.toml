@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "task-organiser"
 version = "0.0.0"
 description = "Relearning FastAPI"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "fastapi==0.139.0",
     "uvicorn==0.49.0",
