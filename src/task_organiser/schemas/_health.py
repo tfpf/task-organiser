@@ -2,7 +2,9 @@ import enum
 
 from pydantic import BaseModel
 
-HealthResponseStatus = enum.StrEnum("HealthResponseStatus", ["up"])
+
+class HealthResponseStatus(enum.StrEnum):
+    UP = enum.auto()
 
 
 class HealthResponse(BaseModel):
