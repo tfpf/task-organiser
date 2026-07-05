@@ -17,7 +17,7 @@ app.include_router(routers.health_router)
 
 
 @app.exception_handler(IntegrityError)
-async def handle_integrity_error(_request: Request, e: IntegrityError):
+async def handle_integrity_error(_request: Request, e: IntegrityError) -> JSONResponse:
     match e.orig.diag.constraint_name:
         case "users_user_name_unique":
             status_code = status.HTTP_409_CONFLICT
