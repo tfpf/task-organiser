@@ -1,7 +1,6 @@
-from task_organiser.constants import AuthConstants
-from task_organiser.schemas import SignupRequest, SignupResponse
+from task_organiser import constants, schemas
 
 
-class AuthService:
-    def signup(self, _request: SignupRequest) -> SignupResponse:
-        return SignupResponse(text=AuthConstants.signup_success)
+class Auth:
+    def signup(self, _request: schemas.SignupRequest) -> schemas.SignupResponse:
+        return schemas.SignupResponse(text=constants.Auth.signup_success)
