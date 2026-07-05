@@ -17,5 +17,12 @@ app.include_router(routers.health_router)
 
 
 @app.exception_handler(IntegrityError)
-async def handle_integrity_error(_request: Request, _e: IntegrityError):
-    return JSONResponse(status_code=status.HTTP_409_CONFLICT, content={"text": "database constraint violation"})
+async def handle_integrity_error(_request: Request, e: IntegrityError):
+    match e.orig.diag.constraint_name:
+        case "users_user_name_unique":
+            status_code = status.HTTP_409_CONFLICT
+            text = "User name is already taken"
+        case _:
+            status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+            text = "Unknown constraint violation error"
+    return JSONResponse(status_code=status_code, content={"text": text})
