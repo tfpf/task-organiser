@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 
 import task_organiser
-from task_organiser import routers
-from task_organiser import database
-
-from task_organiser import models
+from task_organiser import (
+    database,
+    models,  # noqa: F401
+    routers,
+)
 
 database.Base.metadata.create_all(database.engine)
 
