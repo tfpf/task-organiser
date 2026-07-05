@@ -4,7 +4,7 @@ from argon2 import PasswordHasher
 from fastapi import Depends
 from sqlalchemy.orm import Session
 
-from task_organiser import database, repositories, schemas, utils
+from task_organiser import database, repositories, schemas
 
 password_hasher = PasswordHasher()
 
@@ -17,5 +17,5 @@ class Auth:
     def signup(self, request: schemas.SignupRequest) -> schemas.SignupResponse:
         password_hash = password_hasher.hash(request.password)
         self.user_repository.create(user_name=request.user_name, password_hash=password_hash)
-        utils.commit(self.db)
+        database.commit_db(self.db)
         return schemas.SignupResponse()
