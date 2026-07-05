@@ -1,5 +1,5 @@
-import enum
+import enum as _enum
 
 
-class AuthConstants(enum.StrEnum):
+class AuthConstants(_enum.StrEnum):
     signup_success = "Signed up successfully"
