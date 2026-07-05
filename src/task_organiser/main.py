@@ -1,3 +1,6 @@
+from pathlib import Path
+
+import uvicorn
 from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
 from sqlalchemy.exc import IntegrityError
@@ -26,3 +29,11 @@ async def handle_integrity_error(_request: Request, e: IntegrityError) -> JSONRe
             status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
             text = "Unknown constraint violation error"
     return JSONResponse(status_code=status_code, content={"text": text})
+
+
+def main():
+    uvicorn.run("task_organiser.main:app", reload=True, reload_dirs=[Path(__file__).parent])
+
+
+if __name__ == "__main__":
+    main()

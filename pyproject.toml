@@ -15,9 +15,8 @@ dependencies = [
     "SQLAlchemy==2.0.51",
     "uvicorn==0.49.0",
 ]
-
-[tool.hatch.envs.default.scripts]
-serve = "uvicorn --reload --reload-dir src/ task_organiser.main:app"
+[project.scripts]
+task-organiser = "task_organiser.main:main"
 
 [tool.ruff]
 line-length = 119
