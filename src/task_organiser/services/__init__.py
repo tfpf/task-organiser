@@ -1,1 +1,1 @@
-from task_organiser.services._auth import AuthService
+from task_organiser.services._auth import Auth
