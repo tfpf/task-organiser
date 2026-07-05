@@ -8,7 +8,11 @@ version = "0.0.0"
 description = "Relearning FastAPI"
 requires-python = ">=3.11"
 dependencies = [
+    "argon2-cffi==25.1.0",
     "fastapi==0.139.0",
+    "psycopg==3.3.4",
+    "pydantic-settings==2.14.2",
+    "SQLAlchemy==2.0.51",
     "uvicorn==0.49.0",
 ]
 
