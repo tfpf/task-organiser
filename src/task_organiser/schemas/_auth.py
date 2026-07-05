@@ -7,5 +7,4 @@ class SignupRequest(BaseModel):
 
 
 class SignupResponse(BaseModel):
-    text: str
-    developer_text: str | None = None
+    pass
