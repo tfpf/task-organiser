@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 from pathlib import Path
 
 import uvicorn
@@ -11,6 +12,10 @@ from task_organiser import (
     models,  # noqa: F401
     routers,
 )
+
+argument_parser = ArgumentParser()
+argument_parser.add_argument("--reload", action="store_true", help="enable auto-reload (forwarded to Uvicorn)")
+args = argument_parser.parse_args()
 
 database.Base.metadata.create_all(database.engine)
 
@@ -32,7 +37,7 @@ async def handle_integrity_error(_request: Request, e: IntegrityError) -> JSONRe
 
 
 def main():
-    uvicorn.run("task_organiser.main:app", reload=True, reload_dirs=[Path(__file__).parent])
+    uvicorn.run("task_organiser.main:app", reload=args.reload, reload_dirs=[Path(__file__).parent])
 
 
 if __name__ == "__main__":
