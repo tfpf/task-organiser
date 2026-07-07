@@ -14,6 +14,9 @@ class Auth:
         self.db = db
         self.user_repository = repositories.User(self.db)
 
+    def signin(self, _request: schemas.SigninRequest) -> schemas.SigninResponse:
+        return schemas.SigninResponse(access_token="", expires_at=0)
+
     def signup(self, request: schemas.SignupRequest) -> schemas.SignupResponse:
         password_hash = password_hasher.hash(request.password)
         self.user_repository.create(user_name=request.user_name, password_hash=password_hash)
