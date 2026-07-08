@@ -16,6 +16,6 @@ class Auth:
 
     def signup(self, request: schemas.SignupRequest) -> schemas.SignupResponse:
         password_hash = password_hasher.hash(request.password)
-        self.user_repository.create(user_name=request.user_name, password_hash=password_hash)
+        self.user_repository.create(username=request.username, password_hash=password_hash)
         database.commit_db(self.db)
         return schemas.SignupResponse()

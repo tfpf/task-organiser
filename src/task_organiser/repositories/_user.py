@@ -7,6 +7,6 @@ class User:
     def __init__(self, db: Session):
         self.db = db
 
-    def create(self, user_name: str, password_hash: bytes):
-        user_model = models.User(user_name=user_name, password_hash=password_hash)
+    def create(self, username: str, password_hash: bytes):
+        user_model = models.User(username=username, password_hash=password_hash)
         self.db.add(user_model)
