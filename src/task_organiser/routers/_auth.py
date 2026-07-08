@@ -7,7 +7,7 @@ from task_organiser import schemas, services
 router = APIRouter(prefix="/auth")
 
 
-@router.post("/signup", status_code=status.HTTP_201_CREATED)
+@router.post("/signup", status_code=status.HTTP_201_CREATED, summary="Register a new user")
 def signup(
     request: schemas.SignupRequest, auth_service: Annotated[services.Auth, Depends(services.Auth)]
 ) -> schemas.SignupResponse:
