@@ -14,7 +14,7 @@ def signin(
     return auth_service.signin(request)
 
 
-@router.post("/signup", status_code=status.HTTP_201_CREATED)
+@router.post("/signup", status_code=status.HTTP_201_CREATED, summary="Register a new user")
 def signup(
     request: schemas.SignupRequest, auth_service: Annotated[services.Auth, Depends(services.Auth)]
 ) -> schemas.SignupResponse:
