@@ -19,7 +19,7 @@ class SigninResponse(BaseModel):
 
 
 class SignupRequest(BaseModel):
-    user_name: str
+    username: str
     password: str = Field(min_length=8)
 
 
