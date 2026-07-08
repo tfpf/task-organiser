@@ -7,7 +7,7 @@ from task_organiser import schemas, services
 router = APIRouter(prefix="/auth")
 
 
-@router.post("/signin", status_code=status.HTTP_200_OK)
+@router.post("/signin", status_code=status.HTTP_200_OK, summary="Log in")
 def signin(
     request: schemas.SigninRequest, auth_service: Annotated[services.Auth, Depends(services.Auth)]
 ) -> schemas.SigninResponse:
