@@ -3,11 +3,6 @@ import enum
 from pydantic import BaseModel, Field
 
 
-class SigninRequest(BaseModel):
-    user_name: str
-    password: str
-
-
 class SigninResponseTokenType(enum.StrEnum):
     BEARER = enum.auto()
 

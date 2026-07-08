@@ -1,6 +1,7 @@
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, status
+from fastapi.security import OAuth2PasswordRequestForm
 
 from task_organiser import schemas, services
 
@@ -9,7 +10,8 @@ router = APIRouter(prefix="/auth")
 
 @router.post("/signin", status_code=status.HTTP_200_OK, summary="Log in")
 def signin(
-    request: schemas.SigninRequest, auth_service: Annotated[services.Auth, Depends(services.Auth)]
+    request: Annotated[OAuth2PasswordRequestForm, Depends()],
+    auth_service: Annotated[services.Auth, Depends(services.Auth)],
 ) -> schemas.SigninResponse:
     return auth_service.signin(request)
 

@@ -2,6 +2,7 @@ from typing import Annotated
 
 from argon2 import PasswordHasher
 from fastapi import Depends
+from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 
 from task_organiser import database, repositories, schemas
@@ -14,7 +15,7 @@ class Auth:
         self.db = db
         self.user_repository = repositories.User(self.db)
 
-    def signin(self, _request: schemas.SigninRequest) -> schemas.SigninResponse:
+    def signin(self, _request: OAuth2PasswordRequestForm) -> schemas.SigninResponse:
         return schemas.SigninResponse(access_token="", expires_at=0)
 
     def signup(self, request: schemas.SignupRequest) -> schemas.SignupResponse:
